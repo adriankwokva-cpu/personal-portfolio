@@ -1,0 +1,194 @@
+---
+// Edit this list to add or change projects.
+const projects = [
+  {
+    title: "Project 1",
+    blurb:
+      "Short description one what the project is about, its progress, what it aims to do/solve. Short description one what the project is about, its progress, what it aims to do/solve.",
+    tags: ["-", "-", "-"],
+    link: "https://some-related-link-to-project.com",
+  },
+  {
+    title: "Project 2",
+    blurb:
+      "Short description one what the project is about, its progress, what it aims to do/solve. Short description one what the project is about, its progress, what it aims to do/solve.",
+    tags: ["-", "-", "-"],
+    link: "https://some-related-link-to-project.com",
+  },
+  {
+    title: "Project 3",
+    blurb:
+      "Short description one what the project is about, its progress, what it aims to do/solve. Short description one what the project is about, its progress, what it aims to do/solve.",
+    tags: ["-", "-", "-"],
+    link: "https://some-related-link-to-project.com",
+  },
+];
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Adrian Kwok</title>
+    <meta
+      name="description"
+      content="Adrian Kwok — student at the Academies of Loudoun, researching translational medical science in neurodegenerative disease."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..600;1,400&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <main>
+      <header>
+        <h1>Adrian Kwok</h1>
+        <p class="bio">
+          I'm a student at the Academies of Loudoun, alongside John Champe,
+          currently researching translational medical science regarding
+          neurodegenerative disease.
+        </p>
+        <nav class="links">
+          <a href="mailto:you@example.com">Contact Me</a>
+          <a href="https://www.linkedin.com/in/yourusername">LinkedIn</a>
+          <a href="https://github.com/yourusername">GitHub</a>
+        </nav>
+      </header>
+
+      <section>
+        <h2>Projects I'm Working On:</h2>
+        {
+          projects.map((p) => (
+            <article class="project">
+              <h3>{p.title}</h3>
+              <p class="desc">{p.blurb}</p>
+              <p class="tags">{p.tags.join("   ")}</p>
+              <a class="project-link" href={p.link}>
+                {p.link}
+              </a>
+            </article>
+          ))
+        }
+      </section>
+    </main>
+
+    <style>
+      :root {
+        --text: #111111;
+        --gray: #555555;
+        --rule: #cccccc;
+        --serif: "Lora", Georgia, "Times New Roman", serif;
+        --georgia: Georgia, "Times New Roman", serif;
+        --sans: Arial, Helvetica, sans-serif;
+      }
+      * {
+        box-sizing: border-box;
+      }
+      html {
+        background: #ffffff;
+        color: var(--text);
+      }
+      body {
+        margin: 0;
+      }
+      main {
+        max-width: 920px;
+        margin: 0 auto;
+        padding: 4rem 3rem 6rem;
+      }
+
+      /* Header */
+      h1 {
+        font-family: var(--serif);
+        font-weight: 500;
+        font-size: 2.6rem;
+        margin: 0 0 1.25rem;
+      }
+      .bio {
+        font-family: var(--sans);
+        font-style: italic;
+        font-weight: 700;
+        font-size: 1.15rem;
+        line-height: 1.45;
+        max-width: 60ch;
+        margin: 0;
+      }
+      .links {
+        display: flex;
+        gap: 5rem;
+        margin: 2.5rem 0 1rem;
+      }
+      .links a {
+        font-family: var(--georgia);
+        font-size: 1.1rem;
+        color: var(--text);
+        text-decoration: underline;
+      }
+
+      /* Projects */
+      h2 {
+        font-family: var(--serif);
+        font-weight: 500;
+        font-size: 1.6rem;
+        margin: 4rem 0 2rem;
+      }
+      .project {
+        padding: 0 0 2rem;
+        margin: 0 0 2rem;
+        border-bottom: 1px solid var(--rule);
+      }
+      .project:last-child {
+        border-bottom: none;
+      }
+      .project h3 {
+        font-family: var(--sans);
+        font-style: italic;
+        font-weight: 400;
+        font-size: 1.4rem;
+        color: var(--gray);
+        margin: 0 0 0.5rem;
+      }
+      .desc {
+        font-family: var(--sans);
+        font-size: 1.1rem;
+        line-height: 1.5;
+        color: var(--gray);
+        max-width: 70ch;
+        margin: 0 0 0.5rem;
+      }
+      .tags {
+        font-family: var(--sans);
+        font-size: 1.1rem;
+        color: var(--gray);
+        letter-spacing: 0.3em;
+        margin: 0 0 0.5rem;
+        padding-left: 1.5rem;
+      }
+      .project-link {
+        font-family: var(--sans);
+        font-size: 1.1rem;
+        color: var(--gray);
+        text-decoration: none;
+      }
+      .project-link:hover {
+        text-decoration: underline;
+      }
+
+      @media (max-width: 600px) {
+        main {
+          padding: 2.5rem 1.5rem 4rem;
+        }
+        .links {
+          gap: 2rem;
+          flex-wrap: wrap;
+        }
+        h1 {
+          font-size: 2rem;
+        }
+      }
+    </style>
+  </body>
+</html>

@@ -1,0 +1,218 @@
+---
+// Edit this list to add or change projects.
+const projects = [
+  {
+    title: "Project 1",
+    blurb:
+      "Short description one what the project is about, its progress, what it aims to do/solve. Short description one what the project is about, its progress, what it aims to do/solve.",
+    tags: ["-", "-", "-"],
+    link: "https://some-related-link-to-project.com",
+  },
+  {
+    title: "Project 2",
+    blurb:
+      "Short description one what the project is about, its progress, what it aims to do/solve. Short description one what the project is about, its progress, what it aims to do/solve.",
+    tags: ["-", "-", "-"],
+    link: "https://some-related-link-to-project.com",
+  },
+  {
+    title: "Project 3",
+    blurb:
+      "Short description one what the project is about, its progress, what it aims to do/solve. Short description one what the project is about, its progress, what it aims to do/solve.",
+    tags: ["-", "-", "-"],
+    link: "https://some-related-link-to-project.com",
+  },
+];
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Adrian Kwok</title>
+    <meta
+      name="description"
+      content="Adrian Kwok — student at the Academies of Loudoun, researching translational medical science in neurodegenerative disease."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..600;1,400&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <main>
+      <header>
+        <h1>Adrian Kwok</h1>
+        <p class="bio">
+          I'm a student at the Academies of Loudoun and John Champe,
+          <br />
+         currently researching translational medical science regarding
+          neurodegenerative disease.
+        </p>
+        <nav class="links">
+          <a href="mailto:adriankwok.va@gmail.com">Contact Me</a>
+          <a href="https://www.linkedin.com/in/adrian-kwok-851142417/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+          <a href="https://github.com/adriankwokva-cpu" target="_blank" rel="noopener noreferrer">GitHub</a>
+        </nav>
+      </header>
+
+      <section>
+        <h2>Projects I'm Working On:</h2>
+        {
+          projects.map((p) => (
+            <article class="project">
+              <h3>{p.title}</h3>
+              <p class="desc">{p.blurb}</p>
+              <p class="tags">{p.tags.join("   ")}</p>
+              <a class="project-link" href={p.link}>
+                {p.link}
+              </a>
+            </article>
+          ))
+        }
+      </section>
+    </main>
+
+    <style>
+      :root {
+        --text: #111111;
+        --gray: #555555;
+        --rule: #cccccc;
+        --serif: "Lora", Georgia, "Times New Roman", serif;
+        --georgia: Georgia, "Times New Roman", serif;
+        --sans: Arial, Helvetica, sans-serif;
+
+        /* ---- TWO LEFT EDGES ----
+           --edge-outer: where the name, bio, and projects heading start.
+           --indent: extra space added on top of that for the links and the
+                     contents of each project (the "inner" column).
+           Increase --indent to push the inner column further right. */
+        --edge-outer: 4rem;
+        --indent: 0.8rem;
+
+        /* ---- FONT SIZES (translated from your 21/15/14/13 slide scale) ---- */
+        --fs-name: 2rem;     /* "Adrian Kwok"  (21) */
+        --fs-subhead: 1.3rem;  /* Project 1/2/3  (15) */
+        --fs-projhead: 1.3rem; /* "Projects I'm Working On:" (14) */
+        --fs-body: 1.15rem;    /* bio, links, descriptions, urls (13) */
+      }
+      * {
+        box-sizing: border-box;
+      }
+      html {
+        background: #ffffff;
+        color: var(--text);
+      }
+      body {
+        margin: 0;
+      }
+      main {
+        max-width: 960px;
+        margin: 0;
+        padding: 4.5rem 4rem 6rem var(--edge-outer);
+      }
+
+      /* OUTER edge: name, bio, projects heading */
+      h1 {
+        font-family: var(--serif);
+        font-weight: 400;
+        font-size: var(--fs-name);
+        margin: 0 0 1rem;
+      }
+      .bio {
+        font-family: var(--sans);
+        font-style: italic;
+        font-weight: 400;
+        font-size: var(--fs-body);
+        line-height: 1.5;
+        max-width: 60ch;
+        margin: 0 0 0 -1rem;
+      }
+      h2 {
+        font-family: var(--serif);
+        font-weight: 400;
+        font-size: var(--fs-projhead);
+        margin: 8rem 0 2.5rem -0.5rem;
+      }
+
+      /* INNER edge: links + everything inside each project */
+      .links {
+        display: flex;
+        gap: 5rem;
+        margin: 3rem 0 0;
+        padding-left: var(--indent);
+      }
+      .links a {
+        font-family: var(--georgia);
+        font-size: var(--fs-body);
+        color: #1a0dab;
+        text-decoration: underline;
+      }
+
+      .project {
+        padding: 0 0 2.25rem var(--indent);
+        margin: 0 0 2.25rem;
+        border-bottom: 1px solid var(--rule);
+      }
+      .project:last-child {
+        border-bottom: none;
+      }
+      .project h3 {
+        font-family: var(--sans);
+        font-style: italic;
+        font-weight: 400;
+        font-size: var(--fs-subhead);
+        color: var(--gray);
+        margin: 0 0 0.22rem;
+      }
+      .desc {
+        font-family: var(--sans);
+        font-size: var(--fs-body);
+        line-height: 1.5;
+        color: var(--gray);
+        max-width: 72ch;
+        margin: 0 0 0.6rem;
+      }
+      .tags {
+        font-family: var(--sans);
+        font-size: var(--fs-body);
+        color: var(--gray);
+        letter-spacing: 0.3em;
+        margin: 0 0 0.6rem;
+        padding-left: 1.5rem;
+      }
+      .project-link {
+        font-family: var(--sans);
+        font-size: var(--fs-body);
+        color: #1a0dab;
+        text-decoration: none;
+      }
+      .project-link:hover {
+        text-decoration: underline;
+      }
+
+      @media (max-width: 600px) {
+        :root {
+          --edge-outer: 1.5rem;
+          --indent: 0.75rem;
+        }
+        main {
+          padding: 2.5rem 1.5rem 4rem var(--edge-outer);
+        }
+        .links {
+          gap: 2rem;
+          flex-wrap: wrap;
+        }
+        h1 {
+          font-size: 2rem;
+        }
+        h2 {
+          margin: 5rem 0 2rem;
+        }
+      }
+    </style>
+  </body>
+</html>
